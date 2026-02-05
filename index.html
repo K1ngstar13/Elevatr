@@ -1,707 +1,374 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoSignal | Turn Noise Into Signal</title>
-    <meta name="description" content="AI-native signal engine built on BNB Chain for creators, curators, and communities.">
-    
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#06b6d4', // Cyan-500
-                        secondary: '#7c3aed', // Violet-600
-                        dark: '#020617', // Slate-950
-                        surface: '#0f172a', // Slate-900
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ELEVATR ($ELVTR) — press the button. level up together." />
+  <title>ELEVATR — Whitepage</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js" type="application/javascript"></script>
 </head>
-<body class="bg-dark text-slate-100 font-sans antialiased overflow-x-hidden">
-
-    <!-- Navigation -->
-    <script src="components/navbar.js"></script>
-    <custom-navbar></custom-navbar>
-
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Background Effects -->
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-dark to-dark"></div>
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%2306b6d4\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-        
-        <!-- Floating Elements -->
-        <div class="absolute top-1/4 left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
-
-        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-primary/30 text-primary text-sm font-mono mb-8 animate-float">
-                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                Live on BNB Chain
-            </div>
-            
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-slate-100 via-primary to-secondary">
-                    Turn noise into
-                </span>
-                <br>
-                <span class="text-slate-100">signal.</span>
-            </h1>
-            
-            <p class="text-xl sm:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 font-light">
-                NeoSignal is an AI-native signal engine built on BNB Chain—built for creators, curators, and communities that move fast.
-            </p>
-            
-            <p class="text-primary font-mono text-sm mb-10 tracking-wide">
-                AI tools. Transparent scoring. Onchain incentives.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <a href="#buy" class="group relative px-8 py-4 bg-primary hover:bg-cyan-400 text-dark font-bold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
-                    Get $NSGL
-                    <i data-feather="arrow-right" class="inline-block ml-2 w-5 h-5 transition-transform group-hover:translate-x-1"></i>
-                </a>
-                <a href="#feed" class="px-8 py-4 border border-slate-700 hover:border-primary text-slate-300 hover:text-primary font-medium rounded-lg transition-all duration-300 hover:bg-primary/5">
-                    See the Signal Feed
-                </a>
-            </div>
-            
-            <!-- Trust Row -->
-            <div class="flex flex-wrap justify-center gap-3 text-xs font-mono text-slate-500">
-                <span class="px-3 py-1 rounded-full bg-surface border border-slate-800 flex items-center gap-2">
-                    <i data-feather="shield" class="w-3 h-3 text-primary"></i>
-                    Transparent scoring
-                </span>
-                <span class="px-3 py-1 rounded-full bg-surface border border-slate-800 flex items-center gap-2">
-                    <i data-feather="users" class="w-3 h-3 text-primary"></i>
-                    Community-driven
-                </span>
-                <span class="px-3 py-1 rounded-full bg-surface border border-slate-800 flex items-center gap-2">
-                    <i data-feather="check-circle" class="w-3 h-3 text-primary"></i>
-                    Verify contract from official channels
-                </span>
-                <span class="px-3 py-1 rounded-full bg-surface border border-slate-800 flex items-center gap-2">
-                    <i data-feather="code" class="w-3 h-3 text-primary"></i>
-                    No promises. Just product.
-                </span>
-            </div>
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap navInner">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">
+          <!-- Minimal elevator glyph -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l4 4h-3v6h-2V7H8l4-4z" fill="url(#g)"/>
+            <path d="M7 21V11a2 2 0 012-2h6a2 2 0 012 2v10" stroke="#0b0f1a" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M11 12v9M13 12v9" stroke="#0b0f1a" stroke-width="1.2" stroke-linecap="round" opacity=".85"/>
+            <defs>
+              <linearGradient id="g" x1="8" y1="3" x2="16" y2="7" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#18c6a7"/>
+                <stop offset="1" stop-color="#7a5cff"/>
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i data-feather="chevron-down" class="w-6 h-6 text-slate-600"></i>
+        <span>ELEVATR</span>
+      </div>
+
+      <div class="navLinks">
+        <a href="#about">About</a>
+        <a href="#levels">Levels</a>
+        <a href="#bonus">Distribution Bonus</a>
+        <a href="#whitepage">Whitepage</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="btn btnSmall" href="#whitepage">Read the Whitepage</a>
+        <a class="btn btnPrimary btnSmall" href="#cta">Press the Button</a>
+        <button class="btn btnSmall" id="connectWalletBtn" type="button">Connect Wallet</button>
+      </div>
+</div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap heroGrid">
+      <div>
+        <div class="kicker"><span class="dot"></span> Ground floor ends here • Next level starts now</div>
+        <h1>Press the button.<br/>Level up together.</h1>
+        <p class="lead">
+          <strong>ELEVATR ($ELVTR)</strong> is a culture coin built around one idea: <strong>everyone deserves a shot at the next level</strong>.
+          A clean narrative, a simple roadmap, and a community that moves as one.
+        </p>
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#cta">Get Started</a>
+          <a class="btn" href="#levels">See the Levels</a>
         </div>
-    </section>
-
-    <!-- What is it? Section -->
-    <section id="product" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-4">What is it?</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1: Studio -->
-                <div class="group relative p-8 rounded-2xl bg-surface border border-slate-800 hover:border-primary/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(6,182,212,0.15)]">
-                    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
-                    <div class="relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                            <i data-feather="cpu" class="w-7 h-7 text-primary"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-100 mb-3">Studio</h3>
-                        <p class="text-slate-400 leading-relaxed mb-4">
-                            Create faster with AI. Generate clean, shareable "Signal Cards," clips, and meme variants—built to be posted, tracked, and improved.
-                        </p>
-                        <div class="flex items-center text-primary font-mono text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span>AI-powered generation</span>
-                            <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2: Feed -->
-                <div class="group relative p-8 rounded-2xl bg-surface border border-slate-800 hover:border-primary/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(6,182,212,0.15)]">
-                    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
-                    <div class="relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors">
-                            <i data-feather="activity" class="w-7 h-7 text-secondary"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-100 mb-3">Feed</h3>
-                        <p class="text-slate-400 leading-relaxed mb-4">
-                            Measure what's real. A public feed that ranks trends with transparent scoring—so you can see what's moving before it becomes noise.
-                        </p>
-                        <div class="flex items-center text-secondary font-mono text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span>Real-time ranking</span>
-                            <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3: Challenges -->
-                <div class="group relative p-8 rounded-2xl bg-surface border border-slate-800 hover:border-primary/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(6,182,212,0.15)]">
-                    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
-                    <div class="relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-amber-500/10 flex items-center justify-center mb-6 group-hover:bg-amber-500/20 transition-colors">
-                            <i data-feather="target" class="w-7 h-7 text-amber-500"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-100 mb-3">Challenges</h3>
-                        <p class="text-slate-400 leading-relaxed mb-4">
-                            Earn by contributing. Weekly challenges reward creators and curators for outputs that perform—not empty hype.
-                        </p>
-                        <div class="flex items-center text-amber-500 font-mono text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span>Weekly rewards</span>
-                            <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="#features" class="inline-flex items-center gap-2 text-primary hover:text-cyan-400 font-medium transition-colors">
-                    Explore features
-                    <i data-feather="arrow-down" class="w-4 h-4"></i>
-                </a>
-            </div>
+        <div class="pillRow">
+          <div class="pill">🛗 Built on Solana</div>
+          <div class="pill">⚡ Fast, low fees</div>
+          <div class="pill">🧠 Narrative-first</div>
+          <div class="pill">🤝 Community rewards concept</div>
         </div>
-    </section>
+      </div>
 
-    <!-- How it Works Section -->
-    <section id="how-it-works" class="py-24 bg-surface/50 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-4">How it works</h2>
-                <p class="text-slate-400">From market scan to coordinated action</p>
-            </div>
-            
-            <div class="space-y-12 relative">
-                <!-- Connecting Line -->
-                <div class="absolute left-8 top-8 bottom-8 w-px bg-gradient-to-b from-primary via-secondary to-transparent hidden md:block"></div>
-                
-                <!-- Step 01 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start group">
-                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-surface border-2 border-primary flex items-center justify-center relative z-10 group-hover:bg-primary group-hover:text-dark transition-all duration-300">
-                        <span class="font-mono font-bold text-primary group-hover:text-dark">01</span>
-                    </div>
-                    <div class="flex-1 pt-2">
-                        <h3 class="text-xl font-bold text-slate-100 mb-2">Scan the market</h3>
-                        <p class="text-slate-400 leading-relaxed">
-                            The Feed surfaces narratives, signals, and community momentum with simple, readable scoring. No black boxes.
-                        </p>
-                    </div>
-                </div>
+      <div class="heroCard" id="cta">
+        <div class="cardTitle">Elevatr at a glance</div>
+        <div class="cardSub">A minimalist whitepage layout investors can scan in seconds.</div>
 
-                <!-- Step 02 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start group">
-                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-surface border-2 border-secondary flex items-center justify-center relative z-10 group-hover:bg-secondary group-hover:text-white transition-all duration-300">
-                        <span class="font-mono font-bold text-secondary group-hover:text-white">02</span>
-                    </div>
-                    <div class="flex-1 pt-2">
-                        <h3 class="text-xl font-bold text-slate-100 mb-2">Create signal assets</h3>
-                        <p class="text-slate-400 leading-relaxed">
-                            Use the Studio to generate posts that look premium: consistent layout, sharp typography, high shareability. AI-assisted, human-approved.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Step 03 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start group">
-                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-surface border-2 border-amber-500 flex items-center justify-center relative z-10 group-hover:bg-amber-500 group-hover:text-dark transition-all duration-300">
-                        <span class="font-mono font-bold text-amber-500 group-hover:text-dark">03</span>
-                    </div>
-                    <div class="flex-1 pt-2">
-                        <h3 class="text-xl font-bold text-slate-100 mb-2">Validate together</h3>
-                        <p class="text-slate-400 leading-relaxed">
-                            Curators stake reputation and vote on what's real. Bad signals fade. Strong signals rise. Community consensus drives visibility.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Step 04 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start group">
-                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-surface border-2 border-emerald-500 flex items-center justify-center relative z-10 group-hover:bg-emerald-500 group-hover:text-dark transition-all duration-300">
-                        <span class="font-mono font-bold text-emerald-500 group-hover:text-dark">04</span>
-                    </div>
-                    <div class="flex-1 pt-2">
-                        <h3 class="text-xl font-bold text-slate-100 mb-2">Coordinate action</h3>
-                        <p class="text-slate-400 leading-relaxed">
-                            Communities use the same signal language to move together—faster, cleaner, louder. Shared context creates shared conviction.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-16">
-                <a href="https://docs.neosignal.io" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 border border-slate-700 hover:border-primary text-slate-300 hover:text-primary rounded-lg transition-all duration-300 font-mono text-sm">
-                    <i data-feather="book-open" class="w-4 h-4"></i>
-                    Open the docs
-                </a>
-            </div>
+        <div class="miniGrid" style="margin-top:18px;">
+          <div class="mini">
+            <b>Chain</b>
+            <span>Solana</span>
+          </div>
+          <div class="mini">
+            <b>Ticker</b>
+            <span>ELVTR</span>
+          </div>
+          <div class="mini">
+            <b>Launch</b>
+            <span>Community-first</span>
+          </div>
+          <div class="mini">
+            <b>Theme</b>
+            <span>Next level</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Signal Scoring Section -->
-    <section id="scoring" class="py-24 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-                        Signal is earned.
-                    </span>
-                    <br>
-                    <span class="text-slate-100">Not claimed.</span>
-                </h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
-                    NeoSignal's scoring is designed to be understandable, auditable, and resistant to "trust me" narratives.
-                </p>
-            </div>
-            
-            <div class="grid sm:grid-cols-2 gap-6 mb-8">
-                <div class="p-6 rounded-xl bg-surface border border-slate-800 hover:border-primary/30 transition-colors">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-feather="trending-up" class="w-5 h-5 text-primary"></i>
-                        <h4 class="font-bold text-slate-100">Attention velocity</h4>
-                    </div>
-                    <p class="text-sm text-slate-400">How fast something spreads across networks and communities</p>
-                </div>
-                
-                <div class="p-6 rounded-xl bg-surface border border-slate-800 hover:border-primary/30 transition-colors">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-feather="message-circle" class="w-5 h-5 text-secondary"></i>
-                        <h4 class="font-bold text-slate-100">Engagement quality</h4>
-                    </div>
-                    <p class="text-sm text-slate-400">Not just raw clicks—meaningful interactions and depth of discussion</p>
-                </div>
-                
-                <div class="p-6 rounded-xl bg-surface border border-slate-800 hover:border-primary/30 transition-colors">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-feather="repeat" class="w-5 h-5 text-amber-500"></i>
-                        <h4 class="font-bold text-slate-100">Creator consistency</h4>
-                    </div>
-                    <p class="text-sm text-slate-400">Track record matters. Repeat performers get weighted credibility</p>
-                </div>
-                
-                <div class="p-6 rounded-xl bg-surface border border-slate-800 hover:border-primary/30 transition-colors">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-feather="users" class="w-5 h-5 text-emerald-500"></i>
-                        <h4 class="font-bold text-slate-100">Community confirmation</h4>
-                    </div>
-                    <p class="text-sm text-slate-400">Votes and validation from staked curators with skin in the game</p>
-                </div>
-            </div>
-            
-            <div class="text-center p-4 rounded-lg bg-amber-500/10 border border-amber-500/20">
-                <p class="text-sm text-amber-200 font-mono">
-                    <i data-feather="alert-triangle" class="w-4 h-4 inline-block mr-2"></i>
-                    Scoring is informational, not financial advice.
-                </p>
-            </div>
+        <div class="card" style="margin-top:14px; border-radius:16px;">
+          <h3 style="margin-bottom:6px;">Copy/paste description</h3>
+          <p id="blurb">ELEVATR is for the ones done waiting. Ground floor mindset is over — press the button and rise with the crowd.</p>
         </div>
-    </section>
 
-    <!-- Token Utility Section -->
-    <section id="token" class="py-24 bg-gradient-to-b from-surface to-dark">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-6">
-                        $NSGL powers access,<br>
-                        <span class="text-primary">participation,</span> and incentives.
-                    </h2>
-                    <p class="text-slate-400 mb-8 text-lg">
-                        The native token of NeoSignal isn't just for speculation—it's a tool for building, curating, and governing the signal economy.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                <i data-feather="unlock" class="w-6 h-6 text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-100 mb-1">Access</h4>
-                                <p class="text-slate-400 text-sm">Advanced filters, premium templates, higher rate limits for power users</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                                <i data-feather="edit-3" class="w-6 h-6 text-secondary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-100 mb-1">Participation</h4>
-                                <p class="text-slate-400 text-sm">Curate, validate, and help rank signals with reputation staking</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                                <i data-feather="gift" class="w-6 h-6 text-amber-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-100 mb-1">Incentives</h4>
-                                <p class="text-slate-400 text-sm">Reward programs for creators, curators, and builders who drive value</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                                <i data-feather="git-branch" class="w-6 h-6 text-emerald-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-100 mb-1">Governance</h4>
-                                <p class="text-slate-400 text-sm">Vote on features, challenge formats, and treasury priorities</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-10">
-                        <a href="#token-details" class="inline-flex items-center gap-2 text-primary hover:text-cyan-400 font-medium transition-colors">
-                            View token details
-                            <i data-feather="external-link" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-2xl opacity-20"></div>
-                    <div class="relative bg-surface border border-slate-800 rounded-2xl p-8">
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="text-slate-400 font-mono text-sm">Token Metrics</span>
-                            <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono">Live</span>
-                        </div>
-                        
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center py-3 border-b border-slate-800">
-                                <span class="text-slate-400">Network</span>
-                                <span class="text-slate-100 font-mono">BNB Chain (BEP-20)</span>
-                            </div>
-                            <div class="flex justify-between items-center py-3 border-b border-slate-800">
-                                <span class="text-slate-400">Total Supply</span>
-                                <span class="text-slate-100 font-mono">1,000,000,000</span>
-                            </div>
-                            <div class="flex justify-between items-center py-3 border-b border-slate-800">
-                                <span class="text-slate-400">Utility Status</span>
-                                <span class="text-primary font-mono">Active</span>
-                            </div>
-                            <div class="flex justify-between items-center py-3">
-                                <span class="text-slate-400">Contract</span>
-                                <a href="#" class="text-primary hover:text-cyan-400 font-mono text-sm flex items-center gap-1">
-                                    Verify <i data-feather="external-link" class="w-3 h-3"></i>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-6 p-4 rounded-lg bg-slate-950 border border-slate-800">
-                            <p class="text-xs text-slate-500 font-mono break-all">
-                                0x1234...5678 <span class="text-slate-700">← Example format</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="ctaRow" style="margin-top:14px;">
+          <button class="btn btnSmall" id="copyBtn" type="button">Copy blurb</button>
+          <a class="btn btnPrimary btnSmall" href="#bonus">See bonus tiers</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </header>
 
-    <!-- Viral Loops Section -->
-    <section id="viral" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-secondary/10 to-transparent"></div>
-        
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-4">Built for distribution</h2>
-                <p class="text-slate-400">Engineered to spread. Designed to compound.</p>
-            </div>
-            
-            <div class="space-y-6">
-                <div class="group p-6 rounded-xl bg-surface border border-slate-800 hover:border-primary/50 transition-all duration-300 flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <i data-feather="share-2" class="w-5 h-5 text-primary"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-100 mb-1">Every output is a post</h4>
-                        <p class="text-slate-400">Signal Cards are designed to travel. Optimized aspect ratios, punchy typography, and brand watermarks that spread awareness.</p>
-                    </div>
-                </div>
-                
-                <div class="group p-6 rounded-xl bg-surface border border-slate-800 hover:border-secondary/50 transition-all duration-300 flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
-                        <i data-feather="database" class="w-5 h-5 text-secondary"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-100 mb-1">Every post creates data</h4>
-                        <p class="text-slate-400">Data improves the Feed and future outputs. The more the system is used, the smarter it gets. A living, learning signal engine.</p>
-                    </div>
-                </div>
-                
-                <div class="group p-6 rounded-xl bg-surface border border-slate-800 hover:border-amber-500/50 transition-all duration-300 flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
-                        <i data-feather="refresh-cw" class="w-5 h-5 text-amber-500"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-100 mb-1">Every week has a ritual</h4>
-                        <p class="text-slate-400">Challenges keep the flywheel moving. Weekly competitions create recurring engagement, fresh content, and sustained momentum.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-10">
-                <a href="#challenges" class="inline-flex items-center gap-2 px-6 py-3 bg-surface border border-slate-700 hover:border-amber-500 text-slate-300 hover:text-amber-500 rounded-lg transition-all duration-300">
-                    See this week's challenge
-                    <i data-feather="arrow-right" class="w-4 h-4"></i>
-                </a>
-            </div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>What is ELEVATR?</h2>
+          <p>A simple story people can repeat: <strong>getting off the ground floor of life</strong> and scaling up together.</p>
         </div>
-    </section>
+      </div>
 
-    <!-- Metrics Strip -->
-    <section class="py-16 bg-surface border-y border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <div class="text-3xl sm:text-4xl font-bold text-primary font-mono mb-2 counter" data-target="2847">0</div>
-                    <div class="text-sm text-slate-400 uppercase tracking-wider">Signals generated</div>
-                </div>
-                <div>
-                    <div class="text-3xl sm:text-4xl font-bold text-secondary font-mono mb-2 counter" data-target="432">0</div>
-                    <div class="text-sm text-slate-400 uppercase tracking-wider">Creators onboarded</div>
-                </div>
-                <div>
-                    <div class="text-3xl sm:text-4xl font-bold text-amber-500 font-mono mb-2 counter" data-target="12">0</div>
-                    <div class="text-sm text-slate-400 uppercase tracking-wider">Weekly challenges run</div>
-                </div>
-                <div>
-                    <div class="text-3xl sm:text-4xl font-bold text-emerald-500 font-mono mb-2 counter" data-target="89">0</div>
-                    <div class="text-sm text-slate-400 uppercase tracking-wider">Community nodes</div>
-                </div>
-            </div>
-            <p class="text-center mt-8 text-xs text-slate-600 font-mono">
-                Numbers are public. Receipts > rhetoric.
-            </p>
+      <div class="grid3">
+        <div class="card">
+          <div class="tag">Narrative</div>
+          <h3>Up-only identity</h3>
+          <p>ELEVATR is built to be instantly understood: press the button, doors close, the community rises.</p>
         </div>
-    </section>
-
-    <!-- Roadmap Section -->
-    <section id="roadmap" class="py-24 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-4">Ship fast. Measure signal. Scale community.</h2>
-            </div>
-            
-            <div class="relative">
-                <!-- Timeline Line -->
-                <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-slate-800 transform md:-translate-x-1/2"></div>
-                
-                <!-- Phase 1 -->
-                <div class="relative mb-12 md:mb-24">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right md:pr-12 mb-4 md:mb-0">
-                            <div class="inline-block p-6 rounded-2xl bg-surface border border-primary/30 hover:border-primary transition-colors">
-                                <span class="text-primary font-mono text-sm mb-2 block">Current</span>
-                                <h3 class="text-2xl font-bold text-slate-100 mb-3">Phase 1 — Ignite</h3>
-                                <ul class="space-y-2 text-slate-400 text-sm">
-                                    <li>Studio v1 launch</li>
-                                    <li>Genesis challenges</li>
-                                    <li>Brand kit & templates</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-dark z-10"></div>
-                        <div class="md:w-5/12 md:pl-12 md:text-left">
-                            <span class="text-slate-600 font-mono text-sm">Q1 2024</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Phase 2 -->
-                <div class="relative mb-12 md:mb-24">
-                    <div class="md:flex items-center justify-between flex-row-reverse">
-                        <div class="md:w-5/12 md:text-left md:pl-12 mb-4 md:mb-0">
-                            <div class="inline-block p-6 rounded-2xl bg-surface border border-slate-800 hover:border-secondary transition-colors">
-                                <span class="text-secondary font-mono text-sm mb-2 block">Next</span>
-                                <h3 class="text-2xl font-bold text-slate-100 mb-3">Phase 2 — Momentum</h3>
-                                <ul class="space-y-2 text-slate-400 text-sm">
-                                    <li>Signal Feed v1</li>
-                                    <li>Strategic partnerships</li>
-                                    <li>Leaderboards & reputation</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-secondary border-4 border-dark z-10"></div>
-                        <div class="md:w-5/12 md:pr-12 md:text-right">
-                            <span class="text-slate-600 font-mono text-sm">Q2 2024</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Phase 3 -->
-                <div class="relative">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right md:pr-12 mb-4 md:mb-0">
-                            <div class="inline-block p-6 rounded-2xl bg-surface border border-slate-800 hover:border-emerald-500 transition-colors opacity-60">
-                                <span class="text-emerald-500 font-mono text-sm mb-2 block">Future</span>
-                                <h3 class="text-2xl font-bold text-slate-100 mb-3">Phase 3 — Infrastructure</h3>
-                                <ul class="space-y-2 text-slate-400 text-sm">
-                                    <li>API access for builders</li>
-                                    <li>Governance v1</li>
-                                    <li>Ecosystem grants</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 border-4 border-dark z-10"></div>
-                        <div class="md:w-5/12 md:pl-12 md:text-left">
-                            <span class="text-slate-600 font-mono text-sm">Q3-Q4 2024</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-16">
-                <a href="#" class="inline-flex items-center gap-2 text-slate-400 hover:text-primary transition-colors font-mono text-sm">
-                    Read the full roadmap
-                    <i data-feather="arrow-right" class="w-4 h-4"></i>
-                </a>
-            </div>
+        <div class="card">
+          <div class="tag">Culture</div>
+          <h3>Shareable by design</h3>
+          <p>Clean visuals, clear language, and "levels" that make holders feel like they belong to something bigger.</p>
         </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="py-24 bg-surface/30">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-100 mb-4">FAQ</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="space-y-4" id="faq-container">
-                <div class="faq-item border border-slate-800 rounded-lg overflow-hidden">
-                    <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between hover:bg-surface transition-colors">
-                        <span class="font-medium text-slate-100">Is this a meme coin or a utility token?</span>
-                        <i data-feather="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-slate-400 text-sm leading-relaxed">
-                        It's a culture-driven token with real product utility. We don't pretend to be a research lab—we ship tools people use. The token powers access, curation, and governance within the NeoSignal ecosystem.
-                    </div>
-                </div>
-                
-                <div class="faq-item border border-slate-800 rounded-lg overflow-hidden">
-                    <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between hover:bg-surface transition-colors">
-                        <span class="font-medium text-slate-100">Where can I verify the contract?</span>
-                        <i data-feather="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-slate-400 text-sm leading-relaxed">
-                        Only from official site + official social accounts. Never trust DMs. The contract address is posted in our docs and pinned in our official Telegram. Always double-check the URL and verify through BscScan.
-                    </div>
-                </div>
-                
-                <div class="faq-item border border-slate-800 rounded-lg overflow-hidden">
-                    <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between hover:bg-surface transition-colors">
-                        <span class="font-medium text-slate-100">Does NeoSignal guarantee returns?</span>
-                        <i data-feather="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-slate-400 text-sm leading-relaxed">
-                        No. Crypto is volatile. NeoSignal builds tools, incentives, and transparency—nothing is promised. Never invest more than you can afford to lose. This is experimental technology and culture.
-                    </div>
-                </div>
-                
-                <div class="faq-item border border-slate-800 rounded-lg overflow-hidden">
-                    <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between hover:bg-surface transition-colors">
-                        <span class="font-medium text-slate-100">What chain is it on?</span>
-                        <i data-feather="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-slate-400 text-sm leading-relaxed">
-                        BNB Chain (BSC). Fast, cheap, and widely adopted. We chose BNB Chain for its accessibility and the vibrant creator community already building there.
-                    </div>
-                </div>
-                
-                <div class="faq-item border border-slate-800 rounded-lg overflow-hidden">
-                    <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between hover:bg-surface transition-colors">
-                        <span class="font-medium text-slate-100">How do I participate beyond holding?</span>
-                        <i data-feather="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-slate-400 text-sm leading-relaxed">
-                        Create signal assets in the Studio, curate trends in the Feed, join weekly challenges for rewards, and contribute to the ecosystem through governance votes and community moderation.
-                    </div>
-                </div>
-            </div>
+        <div class="card">
+          <div class="tag">Momentum</div>
+          <h3>Built for attention</h3>
+          <p>In memecoins, attention is liquidity. ELEVATR focuses on narrative, community energy, and transparent expectations.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Final CTA Section -->
-    <section class="py-32 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-dark via-surface to-dark"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
-        
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 class="text-4xl sm:text-6xl font-bold mb-6">
-                <span class="text-slate-100">Stop chasing noise.</span><br>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Start building signal.</span>
-            </h2>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <a href="#buy" class="px-8 py-4 bg-primary hover:bg-cyan-400 text-dark font-bold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
-                    Get $NSGL
-                </a>
-                <a href="#community" class="px-8 py-4 border border-slate-700 hover:border-primary text-slate-300 hover:text-primary font-medium rounded-lg transition-all duration-300 hover:bg-primary/5">
-                    Join the community
-                </a>
-            </div>
-            
-            <!-- Community Links -->
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://x.com/neosignal" target="_blank" class="flex items-center gap-2 px-6 py-3 rounded-lg bg-surface border border-slate-800 hover:border-primary text-slate-400 hover:text-primary transition-all duration-300">
-                    <i data-feather="twitter" class="w-5 h-5"></i>
-                    <span class="font-mono text-sm">X</span>
-                </a>
-                <a href="https://t.me/neosignal" target="_blank" class="flex items-center gap-2 px-6 py-3 rounded-lg bg-surface border border-slate-800 hover:border-primary text-slate-400 hover:text-primary transition-all duration-300">
-                    <i data-feather="send" class="w-5 h-5"></i>
-                    <span class="font-mono text-sm">Telegram</span>
-                </a>
-                <a href="https://discord.gg/neosignal" target="_blank" class="flex items-center gap-2 px-6 py-3 rounded-lg bg-surface border border-slate-800 hover:border-primary text-slate-400 hover:text-primary transition-all duration-300">
-                    <i data-feather="message-square" class="w-5 h-5"></i>
-                    <span class="font-mono text-sm">Discord</span>
-                </a>
-                <a href="https://docs.neosignal.io" target="_blank" class="flex items-center gap-2 px-6 py-3 rounded-lg bg-surface border border-slate-800 hover:border-primary text-slate-400 hover:text-primary transition-all duration-300">
-                    <i data-feather="book" class="w-5 h-5"></i>
-                    <span class="font-mono text-sm">Docs</span>
-                </a>
-            </div>
+  <!-- LEVELS / PHASES -->
+  <section id="levels">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>Levels (phases)</h2>
+          <p>We treat growth like a building — each level unlocks clearer milestones, cleaner execution, and bigger reach.</p>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer -->
-    <script src="components/footer.js"></script>
-    <custom-footer></custom-footer>
+      <div class="levels">
+        <div class="level">
+          <div class="badge"><small>LEVEL 01</small><b>Lobby</b></div>
+          <div>
+            <p><strong>Brand + community launch.</strong> Establish the message, visuals, and core culture. Make it easy to share: "ground floor ends here."</p>
+          </div>
+          <div class="pillBtn">Identity locked</div>
+        </div>
 
-    <script src="script.js"></script>
-    <script>feather.replace();</script>
-<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
+        <div class="level">
+          <div class="badge"><small>LEVEL 02</small><b>Momentum</b></div>
+          <div>
+            <p><strong>Distribution & visibility.</strong> Expand reach through clean content loops, partnerships, and a consistent posting cadence.</p>
+          </div>
+          <div class="pillBtn">Community growth</div>
+        </div>
+
+        <div class="level">
+          <div class="badge"><small>LEVEL 03</small><b>Skydeck</b></div>
+          <div>
+            <p><strong>Utility-lite experiences.</strong> Leaderboards, holder perks, and "level" badges that reward participation and long-term alignment.</p>
+          </div>
+          <div class="pillBtn">Perks & badges</div>
+        </div>
+
+        <div class="level">
+          <div class="badge"><small>LEVEL 04</small><b>Penthouse</b></div>
+          <div>
+            <p><strong>Scale & permanence.</strong> Stronger distribution programs, broader integrations, and a community that can sustain attention.</p>
+          </div>
+          <div class="pillBtn">Long-term vision</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BONUS / DISTRIBUTION -->
+  <section id="bonus">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>Distribution bonus (tiered levels)</h2>
+          <p>
+            A simple concept: the higher your level (the more you hold), the larger your share of community distributions.
+            This is designed as a <strong>transparent, rules-based</strong> system — no secret lists.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid3" style="margin-top:18px">
+        <div class="card">
+          <div class="tag">Tier A</div>
+          <h3>Lobby Holder</h3>
+          <p>Base eligibility for distributions (when active). Perfect for newcomers getting off the ground floor.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Tier B</div>
+          <h3>Skydeck Holder</h3>
+          <p>Higher weighting. Designed for consistent holders who support momentum through volatility.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Tier C</div>
+          <h3>Penthouse Holder</h3>
+          <p>Highest weighting. For long-term aligned holders helping to build the brand and community footprint.</p>
+        </div>
+      </div>
+
+      <div class="calc">
+        <div class="card">
+          <h3>Tier preview (example)</h3>
+          <p>
+            Enter a holding amount to preview a tier. This is an <strong>illustrative UI</strong> for your website.
+            Final thresholds and weighting should match your actual tokenomics and public docs.
+          </p>
+          <div class="inputRow">
+            <input id="holdInput" inputmode="decimal" placeholder="Enter ELVTR held (e.g., 250000)" />
+            <button class="btn btnSmall" id="calcBtn" type="button">Preview</button>
+          </div>
+          <div class="result" id="tierResult" aria-live="polite" style="display:none"></div>
+        </div>
+
+        <div class="card">
+          <h3>How distributions could work</h3>
+          <p>
+            • Snapshot-based: tiers are determined at a stated time window<br/>
+            • Rules-based: weights published ahead of time<br/>
+            • Anti-abuse: minimum hold duration, exclusions for obvious sybil patterns<br/>
+            • Transparent: distribution wallet and txs posted publicly
+          </p>
+          <p style="margin-top:10px">
+            <strong>Important:</strong> This section should never promise profits. It explains a <em>potential</em> community reward structure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHITEPAGE -->
+  <section id="whitepage">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>Whitepage</h2>
+          <p>A clean, investor-friendly explanation of what ELEVATR is, what it isn't, and how the community levels up.</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="tag">Thesis</div>
+          <h3>Why ELEVATR exists</h3>
+          <p>
+            People don't lose because they're dumb — they lose because they're late. ELEVATR is built around a
+            simple signal: <strong>early alignment + shared identity</strong>. The "Levels" framework gives the community a
+            repeatable way to grow attention, participation, and long-term belief.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="tag">Principles</div>
+          <h3>What we optimize for</h3>
+          <p>
+            <strong>Clarity:</strong> one message, easy to repeat.<br/>
+            <strong>Culture:</strong> belonging drives virality.<br/>
+            <strong>Transparency:</strong> rules > whispers.<br/>
+            <strong>Momentum:</strong> consistent execution beats randomness.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="tag">Token</div>
+          <h3>Core details (fill these in)</h3>
+          <p>
+            • Contract address: <span style="opacity:.8">(add after launch)</span><br/>
+            • Total supply: <span style="opacity:.8">(define)</span><br/>
+            • Launch method: <span style="opacity:.8">(e.g., Pump.fun / Fair launch)</span><br/>
+            • Official links: <span style="opacity:.8">(X / Telegram / Dex / Explorer)</span>
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="tag">Roadmap</div>
+          <h3>Execution loop</h3>
+          <p>
+            1) Build identity (Lobby) → 2) Grow visibility (Momentum) → 3) Reward participation (Skydeck) →
+            4) Scale distribution programs (Penthouse).
+          </p>
+          <p style="margin-top:10px">
+            This is intentionally simple: memecoins win when the message is clear and the community stays consistent.
+          </p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>Non-negotiables</h3>
+        <p>
+          We do not promise returns. We do not guarantee price movement. We do not provide financial advice.
+          ELEVATR is a high-risk crypto asset; only participate with what you can afford to lose.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>FAQ</h2>
+          <p>Short answers that reduce friction for first-time buyers.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <details>
+          <summary>Is this financial advice?</summary>
+          <p>No. This site is for information and community storytelling. Crypto is risky; do your own research.</p>
+        </details>
+        <details>
+          <summary>What does "levels" mean?</summary>
+          <p>Levels are a simple way to describe phases of growth and community participation. The goal is clarity and consistency.</p>
+        </details>
+        <details>
+          <summary>How do distribution bonuses work?</summary>
+          <p>Bonuses are a concept for rules-based community distributions tied to holding tiers. Exact rules must be published in advance and executed transparently on-chain.</p>
+        </details>
+        <details>
+          <summary>Where do I buy?</summary>
+          <p>Add your official links after launch (DEX link, explorer, and a verified contract address). Never trust random links in replies.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="wrap">
+      <div class="card" style="padding:22px; border-radius:24px; background:linear-gradient(135deg, rgba(24,198,167,.08), rgba(122,92,255,.07));">
+        <div class="sectionHead" style="align-items:center;">
+          <div>
+            <h2 style="margin:0">Ground floor ends here.</h2>
+            <p style="margin-top:8px">ELEVATR is the button. The community is the lift. The levels are the path.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btnPrimary" href="#">Add DEX link</a>
+            <a class="btn" href="#">Add X / Telegram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footGrid">
+      <div>
+        <div style="font-weight:800; letter-spacing:.06em;">ELEVATR</div>
+        <div style="margin-top:6px;">© <span id="year"></span> • Built for the next level</div>
+      </div>
+      <div class="fine">
+        <strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute financial advice.
+        Crypto assets are highly volatile and risky. Nothing here is a promise of profit, returns, or price appreciation.
+        Always verify official links and the contract address from trusted sources.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
