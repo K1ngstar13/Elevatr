@@ -618,3 +618,18 @@ footer{
     flex-direction:column;
   }
 }
+.video-wrap{
+  width: 100%;
+  max-width: 520px;
+  margin: 28px auto 0;
+}
+
+.hero-video{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid #e7ebf3;
+  box-shadow: 0 12px 35px rgba(10,20,60,.08);
+  object-fit: cover;
+}
