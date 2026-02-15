@@ -104,25 +104,77 @@ async function checkExistingConnection() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  
-  
+document.addEventListener('DOMContentLoaded', function () {
+
+  // --- Wallet button (safe placeholder for Solana) ---
   const connectWalletBtn = document.getElementById('connectWalletBtn');
-if (connectWalletBtn) {
-  connectWalletBtn.addEventListener('click', () => {
-    if (userAddress) {
-      navigator.clipboard.writeText(userAddress).then(() => {
-        const originalText = connectWalletBtn.textContent;
-        connectWalletBtn.textContent = 'Address Copied!';
-        setTimeout(() => {
-          connectWalletBtn.textContent = originalText;
-        }, 1500);
-      });
-    } else {
+  if (connectWalletBtn) {
+    connectWalletBtn.addEventListener('click', () => {
       alert('Wallet connect is coming soon. For Solana, we will support Phantom.');
+    });
+  }
+
+  // --- Tier calculator (THIS makes Preview work) ---
+  const tiers = [
+    { name: 'Lobby Holder',     min: 0,        weight: 1, note: 'Base eligibility when distributions are active.' },
+    { name: 'Skydeck Holder',   min: 100000,   weight: 2, note: 'Higher weighting for consistent holders.' },
+    { name: 'Penthouse Holder', min: 1000000,  weight: 3, note: 'Highest weighting for long-term aligned holders.' },
+  ];
+
+  const holdInput = document.getElementById('holdInput');
+  const calcBtn = document.getElementById('calcBtn');
+  const tierResult = document.getElementById('tierResult');
+
+  // If these are null, the script is loading but the section isn't on this page
+  if (!holdInput || !calcBtn || !tierResult) {
+    console.warn('Tier preview elements not found. Check IDs: holdInput, calcBtn, tierResult');
+    return;
+  }
+
+  function getTier(amount) {
+    let t = tiers[0];
+    for (const tier of tiers) {
+      if (amount >= tier.min) t = tier;
     }
+    return t;
+  }
+
+  function format(n) {
+    return new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
+  }
+
+  function showTier() {
+    const raw = (holdInput.value || '').replace(/,/g, '').trim();
+    const amt = Number(raw);
+
+    tierResult.style.display = 'block';
+
+    if (!Number.isFinite(amt) || amt < 0) {
+      tierResult.innerHTML = '<b>Enter a valid number.</b><span style="display:block;margin-top:6px;">Example: 250000</span>';
+      return;
+    }
+
+    const t = getTier(amt);
+    tierResult.innerHTML =
+      `<b>Your tier: ${t.name}</b>` +
+      `<span style="display:block;margin-top:6px;line-height:1.5;">` +
+      `Holding: ${format(amt)} ELVTR • Example weighting: ${t.weight}×<br/>` +
+      `${t.note}<br/><br/><em>This is a UI preview, not a promise of returns.</em>` +
+      `</span>`;
+  }
+
+  calcBtn.addEventListener('click', showTier);
+
+  // Allow Enter key
+  holdInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') showTier();
   });
-}
+
+  // --- Footer year ---
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+}); // ✅ DO NOT DELETE THIS LINE
 
   
   // Copy blurb functionality
