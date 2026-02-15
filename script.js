@@ -107,24 +107,23 @@ async function checkExistingConnection() {
 document.addEventListener('DOMContentLoaded', function() {
   
   
-  // Wallet button click handler
   const connectWalletBtn = document.getElementById('connectWalletBtn');
-  if (connectWalletBtn) {
-    connectWalletBtn.addEventListener('click', () => {
-      if (userAddress) {
-        // If already connected, clicking could disconnect or copy address
-        navigator.clipboard.writeText(userAddress).then(() => {
-          const originalText = connectWalletBtn.textContent;
-          connectWalletBtn.textContent = 'Address Copied!';
-          setTimeout(() => {
-            connectWalletBtn.textContent = originalText;
-          }, 1500);
-        });
-      } else {
-        connectWallet();
-      }
-    });
-  }
+if (connectWalletBtn) {
+  connectWalletBtn.addEventListener('click', () => {
+    if (userAddress) {
+      navigator.clipboard.writeText(userAddress).then(() => {
+        const originalText = connectWalletBtn.textContent;
+        connectWalletBtn.textContent = 'Address Copied!';
+        setTimeout(() => {
+          connectWalletBtn.textContent = originalText;
+        }, 1500);
+      });
+    } else {
+      alert('Wallet connect is coming soon. For Solana, we will support Phantom.');
+    }
+  });
+}
+
   
   // Copy blurb functionality
 const copyBtn = document.getElementById('copyBtn');
