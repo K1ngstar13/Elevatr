@@ -106,8 +106,6 @@ async function checkExistingConnection() {
 
 document.addEventListener('DOMContentLoaded', function() {
   
-  // Initialize wallet connection check
-  checkExistingConnection();
   
   // Wallet button click handler
   const connectWalletBtn = document.getElementById('connectWalletBtn');
