@@ -117,8 +117,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- Tier calculator (THIS makes Preview work) ---
   const tiers = [
     { name: 'Lobby Holder',     min: 0,        weight: 1, note: 'Base eligibility when distributions are active.' },
-    { name: 'Skydeck Holder',   min: 100000,   weight: 2, note: 'Higher weighting for consistent holders.' },
-    { name: 'Penthouse Holder', min: 1000000,  weight: 3, note: 'Highest weighting for long-term aligned holders.' },
+    { name: 'Skydeck Holder',   min: 200000,   weight: 2, note: 'Higher weighting for consistent holders.' },
+    { name: 'Penthouse Holder', min: 2500000,  weight: 3, note: 'Highest weighting for long-term aligned holders.' },
   ];
 
   const holdInput = document.getElementById('holdInput');
@@ -202,8 +202,8 @@ const copyBtn = document.getElementById('copyBtn');
   // Tier calculator
   const tiers = [
     { name: 'Lobby Holder', min: 0, weight: 1, note: 'Base eligibility when distributions are active.' },
-    { name: 'Skydeck Holder', min: 100000, weight: 2, note: 'Higher weighting for consistent holders.' },
-    { name: 'Penthouse Holder', min: 1000000, weight: 3, note: 'Highest weighting for long-term aligned holders.' },
+    { name: 'Skydeck Holder', min: 200000, weight: 2, note: 'Higher weighting for consistent holders.' },
+    { name: 'Penthouse Holder', min: 2500000, weight: 3, note: 'Highest weighting for long-term aligned holders.' },
   ];
 
   const holdInput = document.getElementById('holdInput');
