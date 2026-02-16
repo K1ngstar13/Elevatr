@@ -222,7 +222,37 @@ const copyBtn = document.getElementById('copyBtn');
     return new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
   }
 
-  calcBtn?.addEventListener('click', () => {
+  if (!holdInput || !calcBtn || !tierResult) {
+  console.warn("Tier preview elements missing:", { holdInput, calcBtn, tierResult });
+} else {
+  calcBtn.addEventListener('click', (e) => {
+    e.preventDefault(); // stops any form submit weirdness
+    console.log("Preview clicked ✅");
+
+    const raw = (holdInput.value || '').replace(/,/g,'').trim();
+    const amt = Number(raw);
+
+    tierResult.style.display = 'block';
+
+    if (!Number.isFinite(amt) || amt < 0) {
+      tierResult.innerHTML = '<b>Enter a valid number.</b><span style="display:block;margin-top:6px;">Example: 250000</span>';
+      return;
+    }
+
+    const t = getTier(amt);
+    tierResult.innerHTML =
+      `<b>Your tier: ${t.name}</b>` +
+      `<span style="display:block;margin-top:6px;line-height:1.5;">` +
+      `Holding: ${format(amt)} ELVTR • Example weighting: ${t.weight}×<br/>` +
+      `${t.note}<br/><br/><em>This is a UI preview, not a promise of returns.</em>` +
+      `</span>`;
+  });
+
+  holdInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') calcBtn.click();
+  });
+}
+
     const raw = (holdInput.value || '').replace(/,/g,'').trim();
     const amt = Number(raw);
     if(!isFinite(amt) || amt < 0){
